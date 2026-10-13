@@ -1,0 +1,31 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+<SiteLayout title="Reach Calculator" description="Explore an illustrative range of paid media reach from a monthly advertising budget.">
+  <section class="page calculator-page">
+    <div class="page-topline"><span>REACH ESTIMATOR · PLAN YOUR AD SPEND</span><span>INDICATIVE RANGES</span></div>
+    <div class="calc-intro reveal-in"><p class="eyebrow">HOW FAR DOES YOUR BUDGET GO?</p><h1 class="page-title">See what your budget<br />can <em>reach.</em></h1><p class="page-intro">Set a monthly budget, choose a platform and a category. Explore an illustrative range of clicks and impressions for planning.</p></div>
+    <div class="calculator panel reveal-in delay">
+      <div class="calc-controls">
+        <div class="control-block"><label>PLATFORM</label><div class="platform-options"><button class="active" data-platform="google">Google Search</button><button data-platform="meta">Meta Ads</button><button data-platform="microsoft">Microsoft Ads</button></div></div>
+        <div class="control-block"><label for="budget">MONTHLY BUDGET <strong id="budget-value">Rp 25 juta</strong></label><input id="budget" type="range" min="1" max="100" value="25" /><div class="range-labels"><span>Rp 1 jt</span><span>Rp 50 jt</span><span>Rp 100 jt</span></div></div>
+        <div class="control-block"><label for="category">BUSINESS CATEGORY</label><select id="category"><option value="beauty">Beauty & skincare</option><option value="cosmetics">Cosmetics & haircare</option><option value="fashion">Fashion & lifestyle</option><option value="commerce">General e-commerce</option><option value="electronics">Consumer electronics</option><option value="fmcg">FMCG & F&B</option></select></div>
+      </div>
+      <div class="calc-results"><div><small>ESTIMATED CLICKS</small><b id="click-range">2.5K — 6.3K</b></div><div><small>ESTIMATED IMPRESSIONS</small><b id="impression-range">125K — 331K</b></div></div>
+      <p class="disclaimer">Conservative to optimistic range. Actual delivery varies with competition, bidding, creative and seasonality. This is a planning tool, not a performance guarantee.</p>
+    </div>
+    <div class="cta-band"><h2>Want a number based on <em>your actual account?</em></h2><a class="accent-link" href="/contact">BOOK A FREE AUDIT <span>↗</span></a></div>
+  </section>
+  <script>
+    const budget = document.querySelector('#budget');
+    const category = document.querySelector('#category');
+    let selectedPlatform = 'google';
+    const cpc = {google:{beauty:4000,cosmetics:4300,fashion:3500,commerce:4500,electronics:5200,fmcg:3900},meta:{beauty:2500,cosmetics:2700,fashion:2200,commerce:3000,electronics:3600,fmcg:2400},microsoft:{beauty:5000,cosmetics:5300,fashion:4600,commerce:5200,electronics:5800,fmcg:4900}};
+    const compact = (n) => n >= 1e6 ? (n / 1e6).toFixed(1).replace('.0','') + 'M' : n >= 1e3 ? Math.round(n / 1e3) + 'K' : String(n);
+    function updateEstimate(){const value=Number(budget.value);const spend=value*1e6;const rate=cpc[selectedPlatform][category.value];const low=Math.round(spend/(rate*1.6));const high=Math.round(spend/(rate*.8));document.querySelector('#budget-value').textContent=`Rp ${value} juta`;document.querySelector('#click-range').textContent=`${compact(low)} — ${compact(high)}`;document.querySelector('#impression-range').textContent=`${compact(low*50)} — ${compact(high*53)}`;budget.style.setProperty('--fill',`${(value-1)/99*100}%`)}
+    budget.addEventListener('input',updateEstimate);category.addEventListener('change',updateEstimate);document.querySelectorAll('.platform-options button').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.platform-options button').forEach(item=>item.classList.remove('active'));button.classList.add('active');selectedPlatform=button.dataset.platform;updateEstimate()}));updateEstimate();
+  </script>
+</SiteLayout>
+<style>
+  .calc-intro{margin:74px 0 45px}.calculator{max-width:1000px;margin:0 auto}.calc-controls{display:grid;grid-template-columns:1fr 1fr;gap:35px 45px}.control-block{display:grid;gap:14px}.control-block>label{display:flex;justify-content:space-between;font:8px var(--mono);letter-spacing:.09em;color:#aaa398}.control-block>label strong{color:var(--paper);font:500 12px var(--sans);letter-spacing:0}.platform-options{display:flex;flex-wrap:wrap;gap:7px}.platform-options button{padding:10px 12px;border:1px solid var(--rule);background:transparent;color:#c5beaf;font-size:9px;cursor:pointer}.platform-options button.active,.platform-options button:hover{border-color:var(--accent);background:#f4774314;color:var(--paper)}input[type=range]{width:100%;accent-color:var(--accent);cursor:pointer}.range-labels{display:flex;justify-content:space-between;color:#938d80;font:7px var(--mono)}select{padding:12px;background:#191914;border:1px solid var(--rule);color:var(--paper);font:10px var(--sans)}.calc-results{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px;padding-top:25px;border-top:1px solid var(--rule)}.calc-results>div{display:grid;gap:12px}.calc-results small{color:#aaa398;font:8px var(--mono);letter-spacing:.09em}.calc-results b{font:500 clamp(23px,4vw,40px) var(--display);letter-spacing:-.06em}.disclaimer{max-width:700px;margin:28px 0 0;color:#938d80;font-size:9px;line-height:1.8}.calculator-page .cta-band{max-width:1000px;margin:55px auto 0}@media(max-width:650px){.calc-intro{margin:50px 0 33px}.calc-controls{grid-template-columns:1fr;gap:23px}.calc-results{gap:10px}.calc-results b{font-size:24px}.calc-results small{font-size:6px}.platform-options button{flex:1;padding:10px 8px;font-size:8px}}
+</style>

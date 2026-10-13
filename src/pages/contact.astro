@@ -1,0 +1,16 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+<SiteLayout title="Contact" description="Start a free 30-minute paid media audit conversation with Makta Media in Jakarta.">
+  <section class="page contact-page">
+    <div class="page-topline"><span>MAKTA MEDIA · JAKARTA, INDONESIA</span><span>WORKING ACROSS ID · SG</span></div>
+    <div class="contact-hero reveal-in"><p class="eyebrow">THE FIRST CONVERSATION IS ON US</p><h1 class="page-title">Where do you<br />want to <em>grow?</em></h1><p class="page-intro">Start with a free 30-minute audit. We will review your campaigns and share what we see. No pitch, no pressure.</p>
+      <div class="contact-actions"><a class="accent-link" href="mailto:maktamedia@gmail.com?subject=Free%20campaign%20audit">BOOK A FREE AUDIT <span>↗</span></a><a class="quiet-link" href="mailto:maktamedia@gmail.com">maktamedia@gmail.com</a></div>
+    </div>
+    <div class="contact-grid"><a class="contact-card" href="mailto:maktamedia@gmail.com"><small>EMAIL</small><h2>Tell us what<br />you are building.</h2><span>maktamedia@gmail.com <b>↗</b></span></a><a class="contact-card" href="tel:+628137000689"><small>PHONE</small><h2>Prefer a<br />quick call?</h2><span>+62 813 7000 689 <b>↗</b></span></a><div class="contact-card"><small>BASED IN</small><h2>Jakarta,<br />Indonesia.</h2><span>Working across Indonesia & Singapore</span></div></div>
+    <div class="contact-foot"><span>GOOGLE · META · MICROSOFT</span><span>BEAUTY & LIFESTYLE · ID / SG</span><span>RESPONSE WITHIN 2 BUSINESS DAYS</span></div>
+  </section>
+</SiteLayout>
+<style>
+  .contact-page{min-height:calc(100vh - 176px);position:relative}.contact-page:before{content:'';position:absolute;z-index:-1;top:10%;right:5%;width:min(50vw,600px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#f477431e,transparent 68%);filter:blur(16px);animation:breathe 7s ease-in-out infinite alternate}.contact-hero{padding:75px 0 61px}.contact-hero .page-intro{max-width:480px}.contact-actions{display:flex;align-items:center;gap:22px;margin-top:29px}.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.contact-card{display:block;min-height:220px;padding:23px;background:rgba(238,232,220,.035);border:1px solid var(--rule);transition:background .3s,border-color .3s}.contact-card:hover{background:#f477430d;border-color:#f4774366}.contact-card small{font:8px var(--mono);letter-spacing:.12em;color:var(--accent)}.contact-card h2{margin:36px 0 24px;font:500 clamp(20px,2.3vw,28px)/1.14 var(--display);letter-spacing:-.05em}.contact-card>span{font-size:9px;color:#bdb6a8}.contact-card>span b{color:var(--accent);margin-left:5px}.contact-foot{display:flex;justify-content:space-between;gap:12px;margin-top:42px;padding-top:15px;border-top:1px solid var(--rule);color:#928d81;font:7px var(--mono);letter-spacing:.08em}@keyframes breathe{to{transform:translate(-3%,2%) scale(1.15);opacity:.65}}@media(max-width:650px){.contact-hero{padding:48px 0 38px}.contact-grid{grid-template-columns:1fr}.contact-card{min-height:170px}.contact-card h2{margin:25px 0 18px}.contact-foot{flex-direction:column;font-size:6px}.contact-actions{align-items:flex-start;flex-direction:column;gap:17px}}
+</style>

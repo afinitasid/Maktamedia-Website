@@ -1,0 +1,23 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+const services = [
+  ['01','Google Search','INTENT · SEARCH','Reach people actively looking for the products and services you offer. Keyword strategy, campaign structure, ad creative and smart bidding work together to make each click count.','Search strategy · Ad creative · Smart bidding · Negative keywords'],
+  ['02','Google Shopping','PRODUCT DISCOVERY','Put product, price and brand in front of shoppers ready to compare. We help improve feed quality, promotions and the visibility of best sellers.','Merchant Center · Product feeds · Promotions · Best sellers'],
+  ['03','Performance Max','FULL FUNNEL','Connect Search, YouTube, Gmail and Display with thoughtful creative, audience signals and measurement.','Creative assets · Audience signals · Asset insights'],
+  ['04','Meta Ads','DEMAND GENERATION','Build interest across Facebook and Instagram, then reconnect with people ready to buy.','Custom audiences · Retargeting · Reels · Conversion tracking'],
+  ['05','TikTok Shop','SOCIAL COMMERCE','Support product and LIVE GMV Max with video creative built for shopping journeys.','Product GMV Max · LIVE GMV Max · Creator content'],
+  ['06','Microsoft Ads','SEARCH','Reach search audiences on Bing, with LinkedIn targeting signals available for B2B.','Search campaigns · LinkedIn signals · Shopping'],
+  ['07','Analytics & attribution','MEASUREMENT','Understand which channels contribute to conversions and revenue, then make better decisions from the evidence.','GA4 · AppsFlyer · Adobe Analytics · Cross-channel ROAS'],
+];
+---
+<SiteLayout title="Services" description="Google, Meta, Microsoft and TikTok paid media, analytics and attribution from Makta Media.">
+  <section class="page services-page">
+    <div class="page-topline"><span>WHAT WE DO · ONE CONNECTED MEDIA SYSTEM</span><a href="/contact">Discuss your goals <span>↗</span></a></div>
+    <div class="intro reveal-in"><p class="eyebrow">FROM THE FIRST SEARCH TO THE NEXT ORDER</p><h1 class="page-title">Find your people.<br /><em>Earn their attention.</em></h1><p class="page-intro">We plan and manage the paid channels that help a good business get discovered, considered and chosen. The channel mix follows your customers and your goals.</p></div>
+    <div class="service-list">{services.map(([num,name,type,summary,tools],i)=><article class="service-card reveal-in" style={`--i:${i}`}><span class="num">{num}</span><div class="service-name"><small>{type}</small><h2>{name}</h2></div><p>{summary}</p><span class="tools">{tools}</span><b class="arrow">↗</b></article>)}</div>
+    <div class="cta-band"><h2>Build a media mix around <em>your business.</em></h2><a class="accent-link" href="/contact">LET'S TALK <span>↗</span></a></div>
+  </section>
+</SiteLayout>
+<style>
+  .intro{margin:80px 0 65px}.page-title{margin-top:25px}.service-list{border-top:1px solid var(--rule)}.service-card{position:relative;display:grid;grid-template-columns:42px 1.1fr 1.2fr 1fr 18px;gap:20px;align-items:center;min-height:130px;padding:24px 5px;border-bottom:1px solid var(--rule);animation-delay:calc(var(--i)*.06s)}.num,.service-name small,.tools{font:8px var(--mono);letter-spacing:.08em;color:#a9a398}.num{color:var(--accent)}.service-name small{color:#a9a398}.service-name h2{margin:9px 0 0;font:600 clamp(19px,2.3vw,29px) var(--display);letter-spacing:-.06em}.service-card>p{color:#c2bcaf;font-size:11px;line-height:1.8}.tools{font-size:7px;line-height:1.8}.arrow{color:var(--accent);font-weight:400}.service-card:hover{background:linear-gradient(90deg,#f477430b,transparent);padding-left:13px;transition:padding .25s}.cta-band{margin-top:72px}@media(max-width:850px){.intro{margin:57px 0 42px}.service-card{grid-template-columns:28px 1fr 20px;gap:10px;min-height:0;padding:19px 2px}.service-name{grid-column:2}.service-card>p{grid-column:2;margin:0}.tools{grid-column:2}.arrow{grid-column:3;grid-row:1}}
+</style>
